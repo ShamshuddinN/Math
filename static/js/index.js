@@ -297,6 +297,11 @@ const displayAlert = (message, tone) => {
     }, 1000)    
 }
 
+const checkAnswer = (e) => {
+    if (e.key == 'Enter') {
+        Evaluate()
+    }
+}
 
 const Evaluate = () => {
     const inputValue = document.getElementsByTagName('input')[0].value
@@ -310,17 +315,23 @@ const Evaluate = () => {
 
     if (document.getElementById('MathProblem').innerText == '') {
         displayAlert("First Generate a Problem Statement!", "d")
+        clearInput()
         theSolution = 0
         return 0
     }
 
     if (Number(inputValue) == theSolution) {
         displayAlert("That's Correct! Try another One :)", "s")
+        clearInput()
         problemHandler('u')
     } else {
         displayAlert("Wrong Answer, Try Again", 'd')
     }
     
+}
+
+const clearInput = () => {
+    document.getElementsByTagName('input')[0].value = ''
 }
 
 

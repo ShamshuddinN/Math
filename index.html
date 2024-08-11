@@ -10,7 +10,7 @@
 <body class="bg-dark" >
     <div class="container-fluid">
         <div class="row mt-2 p-1 text-center text-light">
-            <h3>Math Practce</h3>
+            <h3>Math Practice</h3>
         </div>
     </div>
 
@@ -21,7 +21,7 @@
                  
                 <div class="input-group input-group-lg">
                     <span class="input-group-text" > <button class="btn btn-light" onclick="problemHandler('u')" > New <i class="bi bi-arrow-repeat text-dark"></i> </button> </span>
-                    <input type="text" class="form-control">
+                    <input type="text" onkeypress="checkAnswer(event)" class="form-control"> <!--Answer Input is Taken Here -->
                     <span class="input-group-text p-0" > <button class=" btn btn-light" onclick="Evaluate()">Check</button> </span>
                   </div>
 
