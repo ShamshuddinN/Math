@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Math</title>
 </head>
 <body class="bg-dark" >
@@ -13,16 +14,27 @@
         </div>
     </div>
 
-    <div class="container-fluid text-center p-3 mt-3">
+    <div class="container-fluid text-center p-1 mt-2">
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 col-sm-8 col-10 text-light">
-                <h5 class="p-2">Solve: </h5>
-                <input type="text" class="form-control p-2 fw-semibold fs-4 mt-3">
+                <h5 id="MathProblem" class="p-2"> <!-- Problem will be Written Here --> </h5>
+                 
+                <div class="input-group input-group-lg">
+                    <span class="input-group-text" > <button class="btn btn-light" onclick="problemHandler('u')" > New <i class="bi bi-arrow-repeat text-dark"></i> </button> </span>
+                    <input type="text" class="form-control">
+                    <span class="input-group-text p-0" > <button class=" btn btn-light" onclick="Evaluate()">Check</button> </span>
+                  </div>
+
+
+                  <div id="Alert" class="animateDisplay alert alert-success p-1 mt-3 fw-medium d-none" role="alert">
+                    A simple danger alert—check it out!
+                  </div>
+
             </div>
         </div>
     </div>
     
-    <div class="container-fluid text-center p-3 mt-3">
+    <div class="container-fluid text-center p-3 mt-2">
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 col-sm-8 col-10 text-light">
                 <div class="row">
@@ -31,22 +43,16 @@
                     </div>
                     <div class="col text-start">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" value="" onchange="problemHandler('t')" id="Tcheck">
                             <label class="form-check-label" for="defaultCheck1">
                               Tables
                             </label>
-                          </div>
-
-                          <div class="row text-light justify-content-center">
-                            <div class="col">
-                                <p>tbl1</p>
-                            </div>
                           </div>
                     </div>
 
                     <div class="col text-start">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" value="" onchange="problemHandler('s')" id="Scheck">
                             <label class="form-check-label" for="defaultCheck1">
                               Squares
                             </label>
@@ -54,13 +60,42 @@
                     </div>
                     <div class="col text-start">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" value="" onchange="problemHandler('c')" id="CCheck">
                             <label class="form-check-label" for="defaultCheck1">
                               Cubes
                             </label>
                           </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+
+    <div class="container-fluid text-center p-3 mt-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-8 col-10 text-light">
+                <div class="row">
+                    <div class="col">
+                        <h5>Display:</h5>
+                    </div>
+                    <div class="col-3 text-start">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="DisplayTable" onchange="handleDisplays('T')">
+                            <label class="form-check-label" for="defaultCheck1">
+                              Tables
+                            </label>
+                          </div>
+                    </div>
+
+                    <div class="col-5 text-start">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="DisplaySuuares" onchange="handleDisplays('S')">
+                            <label class="form-check-label" for="defaultCheck1">
+                              Squares & Cubes
+                            </label>
+                          </div>
+                    </div>
 
                 </div>
             </div>
@@ -68,29 +103,46 @@
     </div>
 
 
-    <div class="container-fluid text-light text-center p-2 mt-2">
-        <div class="row justify-content-center">
-            <div class="col">
-                <h5>Tables</h5>
-                <div id="tablesC" class="container">
-
-                </div>
+    <div id="mainTblDiv" class="container-fluid text-light text-center p-2 mt-2 d-none">
+        <h5 class="p-2">Tables</h5>
+        <div class="row justify-content-center mt-2 mb-2">
+            <div class="col-3">
+                <div class="input-group mb-3">
+                    <input type="text" id="rangeVal" class="form-control" placeholder="Enter Range, Eg.: 2-5">
+                    <span class="input-group-text p-0 "> <button class="btn btn-light" onclick="writer('t')">Write</button> </span>
+                  </div>
             </div>
-            <div class="col">
-                <h5>Squares Here</h5>
-                <div id="squaresC" class="container">
-
-                </div>
-            </div>
-            <div class="col">
-                <h5>Cubes Here</h5>
-
-                <div id="cubesC" class="container">
-
-                </div>
-            </div>
-
         </div>
+
+        <div id="tablesDiv" class="row justify-content-center">
+
+            <!-- Tables Written Here -->
+                        
+        </div>
+        
+    </div>
+
+
+    <div id="SQnCu" class="container-fluid text-light text-center p-2 mt-2 d-none">
+
+        <h5 class="p-2">Squares & Cubes</h5>
+        <div class="row justify-content-center mt-2 mb-2">
+            <div class="col-5">
+                <div class="input-group mb-3">
+                    <input type="text" id="rangeVal1" class="form-control" placeholder="Enter Range, Eg.: 2-5">
+                    <span class="input-group-text p-0 "> <button class="btn btn-light" onclick="writer('s')">W <sup>2</sup> </button> <button class="btn btn-light" onclick="writer('c')">W <sup>3</sup> </button> </span>
+                  </div>
+            </div>
+        </div>
+
+
+        <div id="SQnCuDiv" class="row justify-content-center">
+
+
+            <!-- Squares and Cubes to be Written Here -->
+                        
+        </div>
+        
     </div>
 
     <script src="static/js/index.js"></script>
