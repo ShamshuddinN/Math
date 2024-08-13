@@ -3,7 +3,6 @@ const randomChoice = (arr) => {
     return arr[randomIndex];
 }
 
-
 const mathWriter = (MathType, mathRange) => {
 
 
@@ -95,7 +94,6 @@ const mathWriter = (MathType, mathRange) => {
 
         finalSHTML += ` ${divEnd} ${divEnd}`
 
-        // console.log(finalSHTML)
 
         document.querySelector('#SQnCuDiv').innerHTML += finalSHTML
 
@@ -134,7 +132,6 @@ const mathWriter = (MathType, mathRange) => {
 
         finalSHTML += ` ${divEnd} ${divEnd}`
 
-        // console.log(finalSHTML)
 
         document.querySelector('#SQnCuDiv').innerHTML += finalSHTML
         
@@ -157,10 +154,10 @@ const handleDisplays = (entity) => {
 
         if (SnQCommonElement.classList.value.includes('d-none')) {
             SnQCommonElement.classList.remove('d-none')
-            console.log('Squares and Cubes Display Shown')
+            
         } else {
             SnQCommonElement.classList.add('d-none')
-            console.log('Squares and Cubes Display Hidden')
+            
         }
     }
 
@@ -189,7 +186,6 @@ const problemHandler = (IPrm) => {
         } else {
             InS = 0
             choiceList = choiceList.filter(ele => (ele !== 's') )
-            console.log(`after removing s from choicelist: ${choiceList}`)
         }
         
     } else if (IPrm == 'c') {
@@ -216,7 +212,6 @@ const problemHandler = (IPrm) => {
     if (PChoice != '') {
         MathProblem(PChoice)
     } else if (IPrm == 'u' && PChoice == '') {
-        console.log('empty pchoice')
         document.getElementById('MathProblem').innerText = ''
         displayAlert("Select atleast one category below", 'd')
     }
@@ -250,6 +245,47 @@ const MathProblem = (choice) => {
     
 }
 
+
+let intervalId;
+
+const intervalTimer = () => {
+
+    const timerElement = document.getElementById('timerElement')
+
+    let secs = 0    
+
+    intervalId = setInterval(() => {
+        secs += 1
+
+        timerElement.innerText = `Time: ${secs}`
+
+        if (secs >= 5) {
+
+            if (timerElement.classList.value.includes('text-dark')) {
+                timerElement.classList.remove('text-dark')
+            }
+            
+            if (!timerElement.classList.value.includes('text-danger')) {
+                timerElement.classList.add('text-danger')
+            }
+            
+        } else if (timerElement.classList.value.includes('text-danger')) {
+            timerElement.classList.remove('text-danger')
+            timerElement.classList.add('text-dark')
+        }
+
+        if (secs == 10) {
+            timerElement.innerText = 'TimeOut!'
+        }
+
+
+    }, 1000)
+
+    
+}
+
+
+// Displaying problem Function:
 const displayProblem = (problemText) => {
 
     if (problemText.includes('sup2')) {
@@ -262,10 +298,25 @@ const displayProblem = (problemText) => {
         document.getElementById('MathProblem').innerText = problemText
     }
 
+
+    document.getElementById('timerElement').innerText = 'Time: 0'
+
+    clearInterval(intervalId)
+    intervalTimer()
+
+    setTimeout(() => {
+        clearInterval(intervalId)
+    }, 10000)
+
+
+
     return 1
 
 }
 
+const timerStop = () => {
+    clearInterval(intervalId); // Stop the interval
+};
 
 
 const displayAlert = (message, tone) => {
@@ -305,8 +356,6 @@ const checkAnswer = (e) => {
 
 const Evaluate = () => {
     const inputValue = document.getElementsByTagName('input')[0].value
-    console.log(`Number coming is: ${Number(inputValue)}`);
-    console.log(`the solution is ${theSolution}`);
 
     if (!Number(inputValue)) {
         displayAlert('Invalid answer', 'd')

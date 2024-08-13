@@ -14,11 +14,16 @@
         </div>
     </div>
 
-    <div class="container-fluid text-center p-1 mt-2">
+    <div class="container-fluid text-center p-1 mt-2 ">
         <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 col-sm-8 col-10 text-light">
-                <h5 id="MathProblem" class="p-2"> <!-- Problem will be Written Here --> </h5>
-                 
+            <div class="col-lg-4 col-md-6 col-sm-8 col-10 text-light ">
+                
+                <div class="d-flex justify-content-center ">
+                     <p class="bg-light-subtle text-dark rounded rounded-pill w-25 p-1 fw-medium fs-6" id="timerElement"> <i class="bi bi-alarm"></i> </p> 
+                </div>
+
+                <h5 id="MathProblem" class="p-2"> <!-- Problem will be Written Here --> </h5> 
+
                 <div class="input-group input-group-lg">
                     <span class="input-group-text" > <button class="btn btn-light" onclick="problemHandler('u')" > New <i class="bi bi-arrow-repeat text-dark"></i> </button> </span>
                     <input type="text" onkeypress="checkAnswer(event)" class="form-control"> <!--Answer Input is Taken Here -->
