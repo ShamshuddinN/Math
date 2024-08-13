@@ -230,7 +230,6 @@ const MathProblem = (choice) => {
 
     let num2 = randomChoice(n2List)
 
-    let probText = ``
 
     if (choice == 't') {
         displayProblem(`Solve: ${num1} X ${num2}`)
@@ -283,7 +282,6 @@ const intervalTimer = () => {
 
     
 }
-
 
 // Displaying problem Function:
 const displayProblem = (problemText) => {
@@ -355,8 +353,8 @@ const checkAnswer = (e) => {
 }
 
 const Evaluate = () => {
-    const inputValue = document.getElementsByTagName('input')[0].value
-
+    const inputValue = document.getElementsByTagName('input')[0].value.replace(/([a-zA-Z])/g, '').trim();
+    
     if (!Number(inputValue)) {
         displayAlert('Invalid answer', 'd')
         return 0
