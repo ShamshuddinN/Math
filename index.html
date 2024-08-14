@@ -16,7 +16,7 @@
 
     <div class="container-fluid text-center p-1 mt-2 ">
         <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 col-sm-8 col-10 text-light ">
+            <div class="col-lg-4 col-md-6 col-sm-9 col-11 text-light ">
                 
                 <div class="d-flex justify-content-center ">
                      <p class="bg-light-subtle text-dark rounded rounded-pill w-25 p-1 fw-medium fs-6" id="timerElement"> <i class="bi bi-alarm"></i> </p> 
@@ -24,7 +24,7 @@
 
                 <h5 id="MathProblem" class="p-2"> <!-- Problem will be Written Here --> </h5> 
 
-                <div class="input-group input-group-lg">
+                <div class="input-group input-group-md">
                     <span class="input-group-text" > <button class="btn btn-light" onclick="problemHandler('u')" > New <i class="bi bi-arrow-repeat text-dark"></i> </button> </span>
                     <input type="text" onkeypress="checkAnswer(event)" class="form-control"> <!--Answer Input is Taken Here -->
                     <span class="input-group-text p-0" > <button class=" btn btn-light" onclick="Evaluate()">Check</button> </span>
@@ -41,12 +41,12 @@
     
     <div class="container-fluid text-center p-3 mt-2">
         <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 col-sm-10 col-12 text-light">
-                <div class="row">
-                    <div class="col">
-                        <h5>Include:</h5>
+            <div class="col-lg-5 col-md-7 col-sm-11 col-12 text-light">
+                <div class="row justify-content-center">
+                    <div class="col-lg-2 col-3">
+                        <h6 class="fs-5" >Include:</h6>
                     </div>
-                    <div class="col text-start">
+                    <div class="col-lg-2 col-3 text-start">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" onchange="problemHandler('t')" id="Tcheck">
                             <label class="form-check-label" for="defaultCheck1">
@@ -55,7 +55,7 @@
                           </div>
                     </div>
 
-                    <div class="col text-start">
+                    <div class="col-lg-2 col-3 text-start">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" onchange="problemHandler('s')" id="Scheck">
                             <label class="form-check-label" for="defaultCheck1">
@@ -63,7 +63,7 @@
                             </label>
                           </div>
                     </div>
-                    <div class="col text-start">
+                    <div class="col-lg-2 col-2 text-start">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" onchange="problemHandler('c')" id="CCheck">
                             <label class="form-check-label" for="defaultCheck1">
@@ -79,24 +79,24 @@
 
     <div class="container-fluid text-center p-3 mt-3">
         <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 col-sm-8 col-10 text-light">
-                <div class="row">
-                    <div class="col">
-                        <h5>Display:</h5>
+            <div class="col-lg-4 col-md-8 col-sm-10 col-12 text-light">
+                <div class="row justify-content-center">
+                    <div class="col-lg-2 col-3">
+                        <h6>Display:</h6>
                     </div>
-                    <div class="col-3 text-start">
+                    <div class="col-lg-2 col-3 text-start">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="DisplayTable" onchange="handleDisplays('T')">
-                            <label class="form-check-label" for="defaultCheck1">
+                            <label class="form-check-label fs-6" for="defaultCheck1">
                               Tables
                             </label>
                           </div>
                     </div>
 
-                    <div class="col-5 text-start">
+                    <div class="col-lg-5 col-6 text-start">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="DisplaySuuares" onchange="handleDisplays('S')">
-                            <label class="form-check-label" for="defaultCheck1">
+                            <label class="form-check-label fs-6" for="defaultCheck1">
                               Squares & Cubes
                             </label>
                           </div>
