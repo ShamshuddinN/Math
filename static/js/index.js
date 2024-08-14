@@ -42,14 +42,13 @@ const mathWriter = (MathType, mathRange) => {
 
         for (let k = Number(Mrange[0]); k < Number(Mrange[1]) + 1; k++) {
             
-            mainTable += `<div class="col"> <p> ${k} X 2 = ${k*2} </p>`
-            mainTable += `<p> ${k} X 3 = ${k*3} </p>`
-            mainTable += `<p> ${k} X 4 = ${k*4} </p>`
-            mainTable += `<p> ${k} X 5 = ${k*5} </p>`
-            mainTable += `<p> ${k} X 6 = ${k*6} </p>`
-            mainTable += `<p> ${k} X 7 = ${k*7} </p>`
-            mainTable += `<p> ${k} X 8 = ${k*8} </p>`
-            mainTable += `<p> ${k} X 9 = ${k*9} </p> </div>`
+            mainTable += `<div class="col-lg-1 col-md-3 col-sm-4 col-4"> `
+
+            for (let p = 2; p <= 9; p++) {
+                mainTable += ` <p> ${k} X ${p} = ${k*p} </p> `
+            };
+
+            mainTable += ' </div> '
         }
 
         document.querySelector('#tablesDiv').innerHTML += mainTable;
